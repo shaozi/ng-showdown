@@ -87,7 +87,7 @@
        * @returns {string} The converted HTML
        */
       this.makeHtml = function (markdown) {
-        return xss(converter.makeHtml(markdown));
+        return filterXSS(converter.makeHtml(markdown));
       };
 
       /**
