@@ -9,7 +9,7 @@
     module.exports = factory(require('angular'), require('showdown'), require('xss'));
   } else {
     // Browser globals (root is window)
-    root.ngShowdown = factory(root.angular, root.showdown, root.xss);
+    root.ngShowdown = factory(root.angular, root.showdown, root.filterXSS);
   }
 }(this, function (angular, showdown, xss) {
   //Check if AngularJs and Showdown is defined and only load ng-Showdown if both are present
@@ -87,7 +87,7 @@
        * @returns {string} The converted HTML
        */
       this.makeHtml = function (markdown) {
-        return filterXSS(converter.makeHtml(markdown));
+        return xss(converter.makeHtml(markdown));
       };
 
       /**
