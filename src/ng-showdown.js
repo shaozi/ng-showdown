@@ -1,17 +1,17 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['angular', 'showdown'], factory);
+    define(['angular', 'showdown', 'xss'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require('angular'), require('showdown'));
+    module.exports = factory(require('angular'), require('showdown'), require('xss'));
   } else {
     // Browser globals (root is window)
-    root.ngShowdown = factory(root.angular, root.showdown);
+    root.ngShowdown = factory(root.angular, root.showdown, root.xss);
   }
-}(this, function (angular, showdown) {
+}(this, function (angular, showdown, xss) {
   //Check if AngularJs and Showdown is defined and only load ng-Showdown if both are present
   if (typeof angular === 'undefined' || typeof showdown === 'undefined') {
     throw new Error('ng-showdown was not loaded because one of its dependencies (AngularJS or Showdown) was not met');
@@ -87,7 +87,7 @@
        * @returns {string} The converted HTML
        */
       this.makeHtml = function (markdown) {
-        return converter.makeHtml(markdown);
+        return xss(converter.makeHtml(markdown));
       };
 
       /**
