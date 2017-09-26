@@ -1,3 +1,4 @@
+;/*! ng-showdown 26-09-2017 */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -208,3 +209,5 @@
 
   return angular.module('ng-showdown');
 }));
+
+//# sourceMappingURL=ng-showdown.js.map

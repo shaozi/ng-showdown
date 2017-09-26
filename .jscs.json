@@ -65,26 +65,5 @@
     ">",
     "!=",
     "!=="
-  ],
-  "requireSpaceAfterBinaryOperators": true,
-  "requireSpacesInConditionalExpression": true,
-  "requireSpaceBeforeBlockStatements": true,
-  "requireSpacesInForStatement": true,
-  "requireLineFeedAtFileEnd": true,
-  "requireSpacesInFunctionExpression": {
-    "beforeOpeningCurlyBrace": true
-  },
-  "requireSpacesInAnonymousFunctionExpression": {
-    "beforeOpeningRoundBrace": true,
-    "beforeOpeningCurlyBrace": true
-  },
-  "disallowSpacesInsideObjectBrackets": "all",
-  "disallowSpacesInsideArrayBrackets": "all",
-  "disallowSpacesInsideParentheses": true,
-  "validateJSDoc": {
-    "checkParamNames": true,
-    "requireParamTypes": true
-  },
-  "disallowMultipleLineBreaks": true,
-  "disallowNewlineBeforeBlockStatements": true
+  ]
 }
