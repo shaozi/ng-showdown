@@ -87,7 +87,29 @@
        * @returns {string} The converted HTML
        */
       this.makeHtml = function (markdown) {
-        return xss(converter.makeHtml(markdown));
+        return xss(converter.makeHtml(markdown), {
+          onTagAttr: (tag, name, value, isWhiteAttr) => {
+            if (tag == "table" && name == "class") {
+              return "table"
+            }
+            // allow images and only allow local folder image
+            // with file name with a-z, A-Z, 0-9, _ and -
+            if (tag == "img" && name == "src") {
+              var pattern = /[a-zA-Z0-9_-]+\.(jpg|jpeg|gif|png|svg)$/
+              var match = pattern.exec(value)
+              if (match) {
+                return './' + match[0]
+              }
+            }
+            if (tag == "a" && name == "href") {
+              var pattern = /[a-zA-Z0-9_-]+\.(pdf|docx|pptx)$/
+              var match = pattern.exec(value)
+              if (match) {
+                return './' + match[0]
+              }
+            }
+          }
+        });
       };
 
       /**
